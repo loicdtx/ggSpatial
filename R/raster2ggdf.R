@@ -57,6 +57,7 @@ raster2ggdf <- function(x) {
         getValues() %>%
         data.frame(values = .) %>%
         cbind(xy)
+    return(out)
 }
 
 
