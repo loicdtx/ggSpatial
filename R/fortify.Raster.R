@@ -51,11 +51,8 @@
 #'     facet_wrap(~ layer)
 #'     
 #' @export
-fortify <- function(model, data, ...) UseMethod("fortify")
-
 #' @rdname fortify.Raster
-#' @export
-#' @method fortify Raster
+
 fortify.Raster <- function(x) {
     
     xy <- xyFromCell(x, seq_len(ncell(x)))
