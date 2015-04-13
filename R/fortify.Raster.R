@@ -1,4 +1,4 @@
-#' Prepare a raster object to plot using geom_raster or geom_tile
+#' Fortify methods for raster* objects
 #' 
 #' @param x raster object
 #' 
@@ -7,7 +7,6 @@
 #' @import raster
 #' @import magrittr
 #' 
-#' @export
 #' 
 #' @examples 
 #' 
@@ -49,8 +48,12 @@
 #'     scale_x_continuous(name = 'Lat', expand=c(0, 0)) +
 #'     scale_y_continuous(name = 'Long', expand=c(0, 0))+
 #'     facet_wrap(~ layer)
+#'     
 
-raster2ggdf <- function(x) {
+#' @rdname fortify
+#' @export
+#' @method fortify Raster*
+fortify.Raster <- function(x) {
     
     xy <- xyFromCell(x, seq_len(ncell(x)))
     out <- x %>%
