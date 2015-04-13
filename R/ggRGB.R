@@ -45,7 +45,7 @@ ggRGB <- function(x, r, g, b) {
     names(x)[g] <- 'g'
     names(x)[b] <- 'b'
     out <- x%>%
-        raster2ggdf() %>%
+        fortify() %>%
         mutate(r = .linStretchVec(values.r)) %>%
         mutate(g = .linStretchVec(values.g)) %>%
         mutate(b = .linStretchVec(values.b)) %>%

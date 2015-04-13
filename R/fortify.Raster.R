@@ -17,7 +17,7 @@
 #' r <- raster(nrow = 10, ncol = 20)
 #' r[] <- rnorm(ncell(r))
 #' 
-#' ggr <- raster2ggdf(r)
+#' ggr <- fortify(r)
 #' 
 #' ggplot() +
 #'     geom_raster(data = ggr, aes(x,y,fill = values)) +
@@ -30,7 +30,7 @@
 #' b <- brick(nrow = 10, ncol = 20, nl = 3)
 #' b[] <- rnorm(ncell(b) * nlayers(b))
 #' names(b) <- c('a', 'b', 'c')
-#' ggb <- raster2ggdf(b)
+#' ggb <- fortify(b)
 #' 
 #' ggplot() +
 #'     geom_raster(data = ggb, aes(x,y,fill = values.a)) +
