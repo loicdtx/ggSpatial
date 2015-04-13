@@ -7,6 +7,7 @@
 #' @import raster
 #' @import magrittr
 #' 
+#' @name fortify.Raster
 #' 
 #' @examples 
 #' 
@@ -49,10 +50,12 @@
 #'     scale_y_continuous(name = 'Long', expand=c(0, 0))+
 #'     facet_wrap(~ layer)
 #'     
-
-#' @rdname fortify
 #' @export
-#' @method fortify Raster*
+fortify <- function(model, data, ...) UseMethod("fortify")
+
+#' @rdname fortify.Raster
+#' @export
+#' @method fortify Raster
 fortify.Raster <- function(x) {
     
     xy <- xyFromCell(x, seq_len(ncell(x)))
