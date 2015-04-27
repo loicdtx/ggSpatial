@@ -13,7 +13,7 @@
 #' @import ggplot2
 #' @import rgdal
 #' 
-# @export
+
 
 
 ggraticule <- function(x, ext = extent(x)) {
@@ -46,21 +46,21 @@ ggraticule <- function(x, ext = extent(x)) {
     
     
 }
+# # 
 # 
-
-x <- getData('GADM', country='Bol', level=1)
-
-xSin <- spTransform(x, CRS("+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +a=6371007.181 +b=6371007.181 +units=m +no_defs"))
-ggxSin <- fortify(xSin)
-ggrat <- ggraticule(xSin)
-
-ggplot() +
-    geom_polygon(data = ggxSin, aes(x=long, y=lat, group=group), fill = NA, colour = 'black') +
-    geom_path(data = ggrat$ggrat, aes(x=long,y=lat,group=group), col = 'grey', linetype = 'dashed') +
-    coord_equal(xlim = extent(xSin)[c(1,2)], ylim = extent(xSin)[c(3,4)]) +
-    scale_x_continuous(name = 'Long', expand=c(0, 0), breaks = ggrat$x_at, labels = ggrat$xLab) +
-    scale_y_continuous(name = 'Lat', expand=c(0, 0), breaks = ggrat$y_at, labels = ggrat$yLab) +
-    theme_bw()
-
-
-### Well, kind of ...
+# x <- getData('GADM', country='Bol', level=1)
+# 
+# xSin <- spTransform(x, CRS("+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +a=6371007.181 +b=6371007.181 +units=m +no_defs"))
+# ggxSin <- fortify(xSin)
+# ggrat <- ggraticule(xSin)
+# 
+# ggplot() +
+#     geom_polygon(data = ggxSin, aes(x=long, y=lat, group=group), fill = NA, colour = 'black') +
+#     geom_path(data = ggrat$ggrat, aes(x=long,y=lat,group=group), col = 'grey', linetype = 'dashed') +
+#     coord_equal(xlim = extent(xSin)[c(1,2)], ylim = extent(xSin)[c(3,4)]) +
+#     scale_x_continuous(name = 'Long', expand=c(0, 0), breaks = ggrat$x_at, labels = ggrat$xLab) +
+#     scale_y_continuous(name = 'Lat', expand=c(0, 0), breaks = ggrat$y_at, labels = ggrat$yLab) +
+#     theme_bw()
+# 
+# 
+# ### Well, kind of ...
