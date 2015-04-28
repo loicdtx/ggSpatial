@@ -12,6 +12,8 @@
 #' @import magrittr
 #' @import raster
 #' @import dplyr
+#' 
+#' @export
 #'
 #' @examples
 #' 

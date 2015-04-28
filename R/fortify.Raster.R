@@ -1,13 +1,14 @@
-#' Prepare a raster object to plot using geom_raster or geom_tile
+#' Fortify methods for raster* objects
 #' 
 #' @param x raster object
+#' @param maxPixel Numeric Maximum number of pixels
 #' 
 #' @author Loic Dutrieux
 #' 
 #' @import raster
 #' @import magrittr
 #' 
-#' @export
+#' @name fortify.Raster
 #' 
 #' @examples 
 #' 
@@ -49,10 +50,16 @@
 #'     scale_x_continuous(name = 'Lat', expand=c(0, 0)) +
 #'     scale_y_continuous(name = 'Long', expand=c(0, 0))+
 #'     facet_wrap(~ layer)
+#'     
+#' @export
+#' @rdname fortify.Raster
 
-raster2ggdf <- function(x) {
+fortify.Raster <- function(x, maxPixel = 1000000) {
     
     xy <- xyFromCell(x, seq_len(ncell(x)))
+    if (ncell(x) > maxPixel) {
+        x <- sampleRegular(x, maxPixel, asRaster=TRUE)
+    }
     out <- x %>%
         getValues() %>%
         data.frame(values = .) %>%
