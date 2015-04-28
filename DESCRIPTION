@@ -1,7 +1,7 @@
 Package: ggSpatial
 Type: Package
 Title: Prepare spatial objects for plotting with ggplot2
-Version: 0.1
+Version: 0.2
 Date: 2015-02-17
 Author: Loïc Dutrieux
 Maintainer: <loic.dutrieux@gmail.com>

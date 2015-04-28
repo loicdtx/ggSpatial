@@ -1,6 +1,7 @@
 #' Fortify methods for raster* objects
 #' 
 #' @param x raster object
+#' @param maxPixel Numeric Maximum number of pixels
 #' 
 #' @author Loic Dutrieux
 #' 
@@ -53,9 +54,12 @@
 #' @export
 #' @rdname fortify.Raster
 
-fortify.Raster <- function(x) {
+fortify.Raster <- function(x, maxPixel = 1000000) {
     
     xy <- xyFromCell(x, seq_len(ncell(x)))
+    if (ncell(x) > maxPixel) {
+        x <- sampleRegular(x, maxPixel, asRaster=TRUE)
+    }
     out <- x %>%
         getValues() %>%
         data.frame(values = .) %>%
