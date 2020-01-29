@@ -3,7 +3,7 @@ Type: Package
 Title: Prepare spatial objects for plotting with ggplot2
 Version: 0.2
 Date: 2015-02-17
-Author: Loïc Dutrieux
+Author: Loic Dutrieux
 Maintainer: <loic.dutrieux@gmail.com>
 Description: Mostly a bunch of wrapper to prepare input dataframes to feed into
     ggplot2. Makes plotting of spatial classes with ggplot2 easier and
